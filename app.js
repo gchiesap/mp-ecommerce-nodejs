@@ -132,13 +132,13 @@ app.get('/rejected', function(req, res) {
     res.render('rejected');
 });
 
-app.post('/notifications', function(req, res) {
+app.get('/notifications', function(req, res) {
     //console.log('Request', req);
     try {
-        console.log('llego', req.body);
+        console.log('llego', req.query);
         res.status(200);
     } catch (error) {
-        //res.status(404);
+        res.status(404);
     }
 
 });
