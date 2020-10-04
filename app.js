@@ -41,7 +41,8 @@ app.get('/crear-preferencia', function(req, res) {
 
     //PAGADOR 
 
-    const name = 'Lalo Landa';
+    const name = 'Lalo';
+    const surname = 'Landa'
     const email = "test_user_63274575@testuser.com";
     const area_code = "11";
     const number = 22223333;
@@ -84,6 +85,7 @@ app.get('/crear-preferencia', function(req, res) {
         },
         payer: {
             name,
+            surname,
             email,
             phone: {
                 area_code,
