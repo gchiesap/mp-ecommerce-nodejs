@@ -109,7 +109,7 @@ app.get('/crear-preferencia', function(req, res) {
         .create(preferencia)
         .then(function(response) {
             console.log(response);
-            res.status(200).redirect(resp.ok.response.init_point);
+            res.status(200).redirect(response.ok.response.init_point);
         })
         .catch(function(error) {
             console.log(error);
