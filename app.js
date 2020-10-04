@@ -129,7 +129,7 @@ app.get('/rejected', function(req, res) {
     res.render('rejected');
 });
 
-app.post('/webhook', (req, res) => {
+app.post('/webhook', function(req, res) {
     try {
         console.log('llego', req.body);
         res.status(200);
