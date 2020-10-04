@@ -27,26 +27,28 @@ const at = 'APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469
 app.get('/crear-preferencia', function(req, res) {
     console.log('Request preferencia', req.query);
 
+    const imagen = req.query.img;
+
     //PRODUCTO
     const title = req.query.title || '';
-    const img = req.query.img || '';
+    const img = `https://gchiesap-mp-commerce-nodejs.herokuapp.com/${imagen.substring(2)}` || '';
     const price = Number(req.query.price) || 0.0;
     const unit = Number(req.query.unit) || 1;
 
     const id = '1234';
-    const description = 'dispositivo movil de tienda e-commerce';
+    const description = '​Dispositivo móvil de Tienda e-commerce';
     const external_reference = 'gchiesap@gmail.com';
 
     //PAGADOR 
 
-    const name = "Lalo Landa";
-    const email = "test_user_63274575@testuser.com"
+    const name = 'Lalo Landa';
+    const email = "test_user_63274575@testuser.com";
     const area_code = "11";
     const number = 22223333;
 
     //Direccion
 
-    const street_name = "Calle False";
+    const street_name = "False";
     const street_number = 123
     const zip_code = "1111"
 
@@ -73,12 +75,11 @@ app.get('/crear-preferencia', function(req, res) {
         }],
         payment_methods: {
             excluded_payment_types: [{
-                    id: "amex",
-                },
-                {
-                    id: "atm",
-                },
-            ],
+                id: "atm",
+            }, ],
+            excluded_payment_methods: [{
+                id: "amex",
+            }],
             installments: 6
         },
         payer: {
@@ -139,7 +140,8 @@ app.post('/notifications', function(req, res) {
     try {
         console.log('llego', req.query);
         console.log('llego2', req.body);
-        res.sendStatus(200);
+
+        res.json(req.body).sendStatus(200);
     } catch (error) {
         res.sendStatus(404);
     }
