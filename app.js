@@ -75,7 +75,7 @@ app.get('/crear-preferencia', function(req, res) {
                     id: "atm",
                 },
             ],
-            intallments: 6
+            installments: 6
         },
         payer: {
             name,
