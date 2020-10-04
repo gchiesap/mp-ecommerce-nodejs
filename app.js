@@ -29,7 +29,7 @@ app.get('/crear-preferencia', function(req, res) {
 
     //PRODUCTO
     const title = req.query.title || '';
-    const img = ('https://gchiesap-mp-commerce-nodejs.herokuapp.com/' + req.query.img) || '';
+    const img = req.query.img || '';
     const price = Number(req.query.price) || 0.0;
     const unit = Number(req.query.unit) || 1;
 
@@ -139,9 +139,9 @@ app.post('/notifications', function(req, res) {
     try {
         console.log('llego', req.query);
         console.log('llego2', req.body);
-        res.status(200);
+        res.sendStatus(200);
     } catch (error) {
-        res.status(404);
+        res.sendStatus(404);
     }
 
 });
