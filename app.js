@@ -2,10 +2,13 @@ var express = require('express');
 var exphbs = require('express-handlebars');
 const mercadopago = require("mercadopago");
 
+var bodyParser = require('body-parser');
+
 var app = express();
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', function(req, res) {
     res.render('home');
@@ -25,7 +28,7 @@ app.get('/crear-preferencia', function(req, res) {
 
     //PRODUCTO
     const title = req.query.title || '';
-    const img = req.query.img || '';
+    const img = ('https://gchiesap-mp-commerce-nodejs.herokuapp.com/' + req.query.img) || '';
     const price = Number(req.query.price) || 0.0;
     const unit = Number(req.query.unit) || 1;
 
@@ -130,7 +133,7 @@ app.get('/rejected', function(req, res) {
 });
 
 app.post('/webhook-mp', function(req, res) {
-    console.log('Request', req);
+    //console.log('Request', req);
     try {
         console.log('llego', req.body);
         res.status(200);
