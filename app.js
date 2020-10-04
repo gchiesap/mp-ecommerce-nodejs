@@ -97,7 +97,7 @@ app.get('/crear-preferencia', function(req, res) {
             failure: rejected
         },
         auto_return: "approved",
-        notification_url: "https://gchiesap-mp-commerce-nodejs.herokuapp.com/webhook"
+        notification_url: "https://gchiesap-mp-commerce-nodejs.herokuapp.com/webhook-mp"
     };
 
     mercadopago.configure({
@@ -129,12 +129,13 @@ app.get('/rejected', function(req, res) {
     res.render('rejected');
 });
 
-app.post('/webhook', function(req, res) {
+app.post('/webhook-mp', function(req, res) {
+    console.log('Request', req);
     try {
         console.log('llego', req.body);
         res.status(200);
     } catch (error) {
-        res.status(404);
+        //res.status(404);
     }
 
 });
