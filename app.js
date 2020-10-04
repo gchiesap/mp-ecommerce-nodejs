@@ -48,9 +48,9 @@ app.get('/crear-preferencia', function(req, res) {
 
     //BACK URLS
 
-    const approved = 'http://localhost:3000/approved';
-    const pending = 'http://localhost:3000/pending';
-    const rejected = 'http://localhost:3000/rejected';
+    const approved = 'https://gchiesap-mp-commerce-nodejs.herokuapp.com/approved';
+    const pending = 'https://gchiesap-mp-commerce-nodejs.herokuapp.com/pending';
+    const rejected = 'https://gchiesap-mp-commerce-nodejs.herokuapp.com/rejected';
 
 
     //EXCLUIR PAGOS ('atm','amex')
@@ -109,15 +109,26 @@ app.get('/crear-preferencia', function(req, res) {
         .create(preferencia)
         .then(function(response) {
             console.log(response);
-            res.json({
-                ok: response,
-            });
+            res.status(200).redirect(resp.ok.response.init_point);
         })
         .catch(function(error) {
             console.log(error);
         });
 
 });
+
+app.get('/approved', function(req, res) {
+    res.render('approved', req.query);
+});
+
+app.get('/pending', function(req, res) {
+    res.render('pending', req.query);
+});
+
+app.get('/rejected', function(req, res) {
+    res.render('rejected', req.query);
+});
+
 
 app.use(express.static('assets'));
 
