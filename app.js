@@ -15,6 +15,7 @@ app.get('/detail', function(req, res) {
     res.render('detail', req.query);
 });
 
+const port = process.env.PORT || 3000;
 
 //ACCESS TOKEN MERCADO PAGO
 const at = 'APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398';
@@ -122,4 +123,4 @@ app.use(express.static('assets'));
 
 app.use('/assets', express.static(__dirname + '/assets'));
 
-app.listen(3000);
+app.listen(port);
